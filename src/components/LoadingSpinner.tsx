@@ -1,41 +1,41 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Code2, Loader2 } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Code2, Loader2 } from "lucide-react";
 
 interface LoadingSpinnerProps {
-  size?: 'small' | 'medium' | 'large';
-  variant?: 'default' | 'minimal' | 'branded';
+  size?: "small" | "medium" | "large";
+  variant?: "default" | "minimal" | "branded";
   message?: string;
   fullScreen?: boolean;
 }
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
-  size = 'medium',
-  variant = 'default',
-  message = 'Loading...',
-  fullScreen = false
+  size = "medium",
+  variant = "default",
+  message = "Loading...",
+  fullScreen = false,
 }) => {
   const sizeClasses = {
-    small: 'w-6 h-6',
-    medium: 'w-8 h-8',
-    large: 'w-12 h-12'
+    small: "w-6 h-6",
+    medium: "w-8 h-8",
+    large: "w-12 h-12",
   };
 
-  const containerClasses = fullScreen 
-    ? 'fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50'
-    : 'flex items-center justify-center p-8';
+  const containerClasses = fullScreen
+    ? "fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50"
+    : "flex items-center justify-center p-8";
 
-  // Default spinning loader
-  if (variant === 'minimal') {
+  if (variant === "minimal") {
     return (
       <div className={containerClasses}>
-        <Loader2 className={`${sizeClasses[size]} animate-spin text-primary-600`} />
+        <Loader2
+          className={`${sizeClasses[size]} animate-spin text-primary-600`}
+        />
       </div>
     );
   }
 
-  // Branded loader with logo
-  if (variant === 'branded') {
+  if (variant === "branded") {
     return (
       <div className={containerClasses}>
         <div className="text-center">
@@ -46,7 +46,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
           >
             <Code2 className="w-12 h-12 text-primary-600" />
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -61,12 +61,12 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
                   key={i}
                   animate={{
                     scale: [1, 1.2, 1],
-                    opacity: [0.5, 1, 0.5]
+                    opacity: [0.5, 1, 0.5],
                   }}
                   transition={{
                     duration: 1,
                     repeat: Infinity,
-                    delay: i * 0.2
+                    delay: i * 0.2,
                   }}
                   className="w-2 h-2 bg-primary-600 rounded-full"
                 />
@@ -78,7 +78,6 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
     );
   }
 
-  // Default loader with progress animation
   return (
     <div className={containerClasses}>
       <div className="text-center">
@@ -89,29 +88,25 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
             className="w-16 h-16 border-4 border-primary-200 border-t-primary-600 rounded-full"
           />
-          
-          {/* Inner pulse */}
+
           <motion.div
-            animate={{ 
+            animate={{
               scale: [1, 1.1, 1],
-              opacity: [0.5, 1, 0.5]
+              opacity: [0.5, 1, 0.5],
             }}
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute inset-2 bg-primary-100 rounded-full"
           />
         </div>
 
-        {/* Loading text with typewriter effect */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           className="space-y-2"
         >
-          <h3 className="text-lg font-medium text-secondary-800">
-            {message}
-          </h3>
-          
+          <h3 className="text-lg font-medium text-secondary-800">{message}</h3>
+
           {/* Progress dots */}
           <div className="flex justify-center space-x-1">
             {[0, 1, 2, 3].map((i) => (
@@ -124,7 +119,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
                   duration: 0.6,
                   repeat: Infinity,
                   delay: i * 0.1,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
                 className="w-1.5 h-1.5 bg-primary-600 rounded-full"
               />
@@ -132,7 +127,6 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
           </div>
         </motion.div>
 
-        {/* Optional progress bar */}
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
@@ -144,8 +138,9 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   );
 };
 
-// Skeleton loader for specific sections
-export const SkeletonLoader: React.FC<{ className?: string }> = ({ className = "" }) => {
+export const SkeletonLoader: React.FC<{ className?: string }> = ({
+  className = "",
+}) => {
   return (
     <div className={`animate-pulse ${className}`}>
       <div className="space-y-4">
@@ -157,7 +152,6 @@ export const SkeletonLoader: React.FC<{ className?: string }> = ({ className = "
   );
 };
 
-// Card skeleton for project/blog cards
 export const CardSkeleton: React.FC = () => {
   return (
     <div className="card p-6 animate-pulse">
@@ -174,7 +168,6 @@ export const CardSkeleton: React.FC = () => {
   );
 };
 
-// Page loading overlay
 export const PageLoader: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
   if (!isLoading) return null;
 
