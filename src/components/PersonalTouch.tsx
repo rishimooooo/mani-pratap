@@ -70,6 +70,7 @@ const PersonalTouch = () => {
                 <img
                   src={image.image}
                   alt={image.title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     (e.target as HTMLElement).style.display = "none";
@@ -101,7 +102,6 @@ const PersonalTouch = () => {
             ))}
           </div>
 
-          {/* Tech Stack */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}

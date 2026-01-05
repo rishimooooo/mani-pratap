@@ -68,8 +68,8 @@ const Footer = () => {
             <h2 className="text-2xl font-bold text-gray-400">Mani Pratap</h2>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed max-w-md">
-            Full Stack Developer passionate about crafting beautiful, scalable,
-            and performant apps using modern tools and best practices.
+            Full Stack Web-Developer passionate about crafting beautiful,
+            scalable, and performant apps using modern tools and best practices.
           </p>
         </div>
 

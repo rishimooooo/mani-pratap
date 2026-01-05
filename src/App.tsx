@@ -13,7 +13,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 
 import { Analytics } from "@vercel/analytics/react";
 
-// Lazy loaded components
+// lazy loaded class
 const GitHubActivity = React.lazy(() => import("./components/GitHubActivity"));
 
 function App() {

@@ -21,7 +21,6 @@ const About = ({ glow }: { glow: boolean }) => {
       ref={ref}
       className={`relative overflow-hidden section-padding transition-all duration-700 bg-[#050505]`}
     >
-      {/* Floating Stars */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {[...Array(60)].map((_, i) => (
           <motion.div
